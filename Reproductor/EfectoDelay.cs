@@ -56,13 +56,14 @@ namespace Reproductor
                 //eliminar excedente
                 int diferencia = muestras.Count - tamañoBuffer;
                 muestras.RemoveRange(0, diferencia);
+                cantidadMuestrasBorradas += diferencia;
             }
             //Aplicar Efecto
             if (milisegundosTranscurridos > offsetMiliSegundos)
             {
                 for(int i = 0; i < read; i++)
                 {
-
+                    buffer[i + offset] += muestras[(cantidadMuestrasTranscurridas - cantidadMuestrasBorradas) + i - numeroMuestrasOffset];
                 }
             }
 
